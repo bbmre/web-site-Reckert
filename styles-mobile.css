@@ -22,6 +22,12 @@
     box-sizing: border-box;
 }
 
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
 html {
     scroll-behavior: smooth;
 }
@@ -78,17 +84,19 @@ header {
 }
 
 .header-container {
+    width: 100%;
     max-width: 100%;
     margin: 0 auto;
-    padding: 0 0.75rem;
+    padding: 0 clamp(0.5rem, 2vw, 1rem);
     display: flex;
     justify-content: space-between;
     align-items: center;
-    gap: 0.5rem;
+    gap: clamp(0.3rem, 1.5vw, 1rem);
+    flex-wrap: wrap;
 }
 
 .logo {
-    font-size: 1.2rem;
+    font-size: clamp(1rem, 3vw, 1.5rem);
     font-weight: 700;
     font-family: 'Playfair Display', serif;
     color: var(--primary-color);
@@ -113,13 +121,13 @@ header {
 .flag-btn {
     background: var(--light-bg);
     border: 2px solid transparent;
-    font-size: 1rem;
+    font-size: clamp(0.8rem, 2vw, 1.2rem);
     cursor: pointer;
-    padding: 0.3rem;
+    padding: clamp(0.2rem, 0.5vw, 0.4rem);
     border-radius: 50%;
     transition: var(--transition);
-    width: 35px;
-    height: 35px;
+    width: clamp(30px, 8vw, 40px);
+    height: clamp(30px, 8vw, 40px);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -272,7 +280,7 @@ nav {
 
 /* ===== Section Styles - Mobile Optimized ===== */
 section {
-    padding: 40px 1rem;
+    padding: clamp(2rem, 5vw, 3rem) clamp(0.75rem, 2vw, 1.5rem);
 }
 
 section:nth-child(even) {
@@ -284,6 +292,7 @@ section:nth-child(odd) {
 }
 
 .container {
+    width: 100%;
     max-width: 100%;
     margin: 0 auto;
     padding: 0;
@@ -291,9 +300,9 @@ section:nth-child(odd) {
 
 .section-title {
     text-align: center;
-    margin-bottom: 2rem;
+    margin-bottom: clamp(1.5rem, 4vw, 2.5rem);
     position: relative;
-    font-size: 1.5rem;
+    font-size: clamp(1.3rem, 4vw, 2rem);
 }
 
 .section-title::after {
@@ -351,18 +360,22 @@ section:nth-child(odd) {
 .amenities-grid {
     display: grid;
     grid-template-columns: 1fr;
-    gap: 1.5rem;
+    gap: clamp(1rem, 3vw, 2rem);
+    width: 100%;
 }
 
 .amenity-card {
     background: var(--white);
-    padding: 1.5rem;
-    border-radius: 10px;
+    padding: clamp(1rem, 3vw, 1.5rem);
+    border-radius: clamp(8px, 2vw, 12px);
     text-align: center;
     transition: var(--transition);
     cursor: pointer;
     box-shadow: var(--shadow-soft);
     border: 1px solid var(--light-bg);
+    display: flex;
+    flex-direction: column;
+    height: 100%;
 }
 
 .amenity-card:active {
@@ -395,8 +408,9 @@ section:nth-child(odd) {
 
 .gallery-grid {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 1rem;
+    grid-template-columns: repeat(auto-fit, minmax(clamp(150px, 40vw, 280px), 1fr));
+    gap: clamp(0.75rem, 2vw, 1.5rem);
+    width: 100%;
 }
 
 .gallery-item {
@@ -462,8 +476,9 @@ section:nth-child(odd) {
 .pricing-grid {
     display: grid;
     grid-template-columns: 1fr;
-    gap: 1.5rem;
-    margin-bottom: 1.5rem;
+    gap: clamp(1rem, 3vw, 2rem);
+    margin-bottom: clamp(1rem, 3vw, 1.5rem);
+    width: 100%;
 }
 
 .pricing-card {
@@ -545,7 +560,8 @@ section:nth-child(odd) {
 .contact-content {
     display: grid;
     grid-template-columns: 1fr;
-    gap: 2rem;
+    gap: clamp(1.5rem, 4vw, 2.5rem);
+    width: 100%;
 }
 
 .contact-info h3 {
@@ -612,12 +628,13 @@ footer {
 }
 
 .footer-content {
+    width: 100%;
     max-width: 100%;
     margin: 0 auto;
     display: grid;
     grid-template-columns: 1fr;
-    gap: 1.5rem;
-    margin-bottom: 1.5rem;
+    gap: clamp(1rem, 3vw, 2rem);
+    margin-bottom: clamp(1rem, 3vw, 1.5rem);
     text-align: left;
 }
 

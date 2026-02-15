@@ -5,12 +5,13 @@
 @media (min-width: 769px) {
     /* ===== Header & Navigation - Desktop Optimized ===== */
     .header-container {
+        width: 100%;
         max-width: 1200px;
-        padding: 0 2rem;
+        padding: 0 clamp(1.5rem, 3vw, 3rem);
     }
 
     .logo {
-        font-size: 1.5rem;
+        font-size: clamp(1.2rem, 3vw, 1.8rem);
     }
 
     /* Show navigation menu on desktop */
@@ -22,13 +23,15 @@
     .nav-menu {
         position: static;
         display: flex;
-        gap: 2.5rem;
+        gap: clamp(1.5rem, 3vw, 2.5rem);
         align-items: center;
+        justify-content: center;
         list-style: none;
         max-height: none;
         box-shadow: none;
         background: transparent;
         flex-direction: row;
+        flex-wrap: wrap;
     }
 
     .nav-menu li {
@@ -70,10 +73,10 @@
     }
 
     .flag-btn {
-        font-size: 1.5rem;
-        width: 50px;
-        height: 50px;
-        padding: 0.6rem;
+        font-size: clamp(1.2rem, 2vw, 1.8rem);
+        width: clamp(40px, 5vw, 60px);
+        height: clamp(40px, 5vw, 60px);
+        padding: clamp(0.4rem, 1vw, 0.8rem);
     }
 
     /* ===== Typography - Desktop Optimized ===== */
@@ -120,29 +123,31 @@
 
     /* ===== Section Styles - Desktop Optimized ===== */
     section {
-        padding: 80px 2rem;
+        padding: clamp(3rem, 8vw, 5rem) clamp(1.5rem, 3vw, 3rem);
     }
 
     .container {
-        max-width: 1200px;
+        width: 100%;
+        max-width: min(1200px, 90vw);
         margin: 0 auto;
     }
 
     .section-title {
-        margin-bottom: 3.5rem;
+        margin-bottom: clamp(2rem, 5vw, 3.5rem);
     }
 
     .section-title::after {
-        width: 80px;
-        height: 4px;
+        width: clamp(60px, 10vw, 100px);
+        height: clamp(3px, 0.5vw, 5px);
     }
 
     /* ===== About Section - Desktop Optimized ===== */
     .about-content {
         display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 4rem;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: clamp(2rem, 5vw, 4rem);
         align-items: center;
+        width: 100%;
     }
 
     .about-image {
@@ -162,13 +167,16 @@
     /* ===== Amenities Section - Desktop Optimized ===== */
     .amenities-grid {
         display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-        gap: 2.5rem;
+        grid-template-columns: repeat(auto-fit, minmax(clamp(200px, 30vw, 300px), 1fr));
+        gap: clamp(1.5rem, 3vw, 3rem);
+        width: 100%;
     }
 
     .amenity-card {
-        padding: 2.5rem;
-        border-radius: 12px;
+        padding: clamp(1.5rem, 3vw, 2.5rem);
+        border-radius: clamp(10px, 2vw, 15px);
+        display: flex;
+        flex-direction: column;
     }
 
     .amenity-card:hover {
@@ -191,12 +199,14 @@
     /* ===== Gallery Section - Desktop Optimized ===== */
     .gallery-grid {
         display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-        gap: 2rem;
+        grid-template-columns: repeat(auto-fit, minmax(clamp(200px, 25vw, 300px), 1fr));
+        gap: clamp(1.5rem, 3vw, 2rem);
+        width: 100%;
     }
 
     .gallery-item {
-        border-radius: 12px;
+        border-radius: clamp(10px, 2vw, 15px);
+        width: 100%;
     }
 
     .gallery-overlay p {
@@ -206,13 +216,14 @@
     /* ===== Pricing Section - Desktop Optimized ===== */
     .pricing-grid {
         display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-        gap: 2.5rem;
+        grid-template-columns: repeat(auto-fit, minmax(clamp(250px, 30vw, 350px), 1fr));
+        gap: clamp(1.5rem, 3vw, 2.5rem);
+        width: 100%;
     }
 
     .pricing-card {
-        padding: 2.5rem;
-        border-radius: 12px;
+        padding: clamp(1.5rem, 3vw, 2.5rem);
+        border-radius: clamp(10px, 2vw, 15px);
     }
 
     .pricing-card.featured {
@@ -242,13 +253,14 @@
 
     /* ===== Contact Section - Desktop Optimized ===== */
     #contact {
-        padding: 80px 2rem;
+        padding: clamp(3rem, 8vw, 5rem) clamp(1.5rem, 3vw, 3rem);
     }
 
     .contact-content {
         display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 4rem;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: clamp(2rem, 5vw, 4rem);
+        width: 100%;
     }
 
     .contact-info h3 {
@@ -283,14 +295,15 @@
 
     /* ===== Footer - Desktop Optimized ===== */
     footer {
-        padding: 3.5rem 2rem 1.5rem;
+        padding: clamp(2rem, 5vw, 3.5rem) clamp(1.5rem, 3vw, 3rem) clamp(1rem, 2vw, 1.5rem);
     }
 
     .footer-content {
+        width: 100%;
         max-width: 1200px;
-        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-        gap: 2.5rem;
-        margin-bottom: 2.5rem;
+        grid-template-columns: repeat(auto-fit, minmax(clamp(200px, 25vw, 300px), 1fr));
+        gap: clamp(1.5rem, 3vw, 2.5rem);
+        margin-bottom: clamp(1.5rem, 3vw, 2.5rem);
     }
 
     .footer-section h4 {
@@ -327,11 +340,11 @@
     }
 
     .gallery-grid {
-        grid-template-columns: repeat(3, 1fr);
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     }
 
     .pricing-grid {
-        grid-template-columns: repeat(3, 1fr);
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     }
 
     .contact-info h3 {
@@ -354,16 +367,16 @@
     }
 
     .amenities-grid {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 2rem;
+        grid-template-columns: repeat(auto-fit, minmax(clamp(200px, 40vw, 280px), 1fr));
+        gap: clamp(1.5rem, 3vw, 2rem);
     }
 
     .gallery-grid {
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns: repeat(auto-fit, minmax(clamp(200px, 40vw, 280px), 1fr));
     }
 
     .pricing-grid {
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns: repeat(auto-fit, minmax(clamp(250px, 40vw, 320px), 1fr));
     }
 
     .pricing-card.featured {
