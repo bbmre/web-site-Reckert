@@ -1,0 +1,1403 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ferienwohnungen Reckert - Witten</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* ===== Reset & Base Styles ===== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-color: #C26E4B;
+            --primary-dark: #4B3832;
+            --accent-color: #C26E4B;
+            --light-bg: #EFE6DD;
+            --bg-white: #FAF7F2;
+            --white: #ffffff;
+            --text-dark: #2E2E2E;
+            --text-light: #6B6B6B;
+            --transition: all 0.3s ease;
+            --shadow-soft: 0 4px 15px rgba(75, 56, 50, 0.08);
+            --shadow-medium: 0 8px 25px rgba(75, 56, 50, 0.12);
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.7;
+            color: var(--text-dark);
+            background-color: var(--light-bg);
+        }
+
+        /* ===== Typography ===== */
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Playfair Display', serif;
+            color: var(--text-dark);
+            font-weight: 600;
+        }
+
+        h1 {
+            font-size: clamp(2.2rem, 5vw, 4rem);
+            font-weight: 700;
+        }
+
+        h2 {
+            font-size: clamp(1.8rem, 4vw, 3rem);
+            font-weight: 600;
+        }
+
+        h3 {
+            font-size: 1.5rem;
+            font-weight: 600;
+        }
+
+        p {
+            color: var(--text-light);
+            margin-bottom: 1.2rem;
+            line-height: 1.8;
+        }
+
+        /* ===== Header & Navigation ===== */
+        header {
+            background: var(--bg-white);
+            color: var(--text-dark);
+            padding: 1.2rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: var(--shadow-soft);
+            border-bottom: 2px solid var(--light-bg);
+        }
+
+        .header-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            font-family: 'Playfair Display', serif;
+            color: var(--primary-color);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .logo:hover {
+            color: var(--primary-dark);
+        }
+
+        /* Language Switch */
+        .language-switch {
+            display: flex;
+            gap: 0.8rem;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .flag-btn {
+            background: var(--light-bg);
+            border: 2px solid transparent;
+            font-size: 1.5rem;
+            cursor: pointer;
+            padding: 0.6rem;
+            border-radius: 50%;
+            transition: var(--transition);
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            line-height: 1;
+            transform: translateY(-2px);
+        }
+
+        .flag-btn:hover,
+        .flag-btn.active {
+            background: var(--primary-color);
+            border-color: var(--primary-color);
+            transform: scale(1.1);
+        }
+
+        .nav-menu {
+            display: flex;
+            gap: 2.5rem;
+            align-items: center;
+            list-style: none;
+        }
+
+        .nav-link {
+            color: var(--text-dark);
+            text-decoration: none;
+            transition: var(--transition);
+            font-weight: 500;
+            position: relative;
+            font-size: 0.95rem;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--primary-color);
+            transition: var(--transition);
+        }
+
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        /* Mobile Menu */
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            gap: 0.4rem;
+        }
+
+        .hamburger span {
+            width: 25px;
+            height: 3px;
+            background: var(--primary-color);
+            border-radius: 2px;
+            transition: var(--transition);
+        }
+
+        @media (max-width: 768px) {
+            .nav-menu {
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: var(--bg-white);
+                flex-direction: column;
+                gap: 0;
+                max-height: 0;
+                overflow: hidden;
+                transition: max-height 0.3s ease;
+            }
+
+            .nav-menu.active {
+                max-height: 300px;
+            }
+
+            .nav-menu li {
+                padding: 1rem 1.5rem;
+                border-bottom: 1px solid var(--light-bg);
+            }
+
+            .hamburger {
+                display: flex;
+            }
+        }
+
+        /* ===== Hero Section ===== */
+        .hero {
+            background: linear-gradient(135deg, rgba(194, 110, 75, 0.6), rgba(75, 56, 50, 0.6)), 
+                        url('./images/apartment.jpg') center/cover;
+            color: var(--white);
+            padding: 160px 1.5rem;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            min-height: 500px;
+            animation: fadeInDown 0.8s ease;
+        }
+
+        .hero h1 {
+            color: var(--white);
+            margin-bottom: 1.5rem;
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.3);
+        }
+
+        .hero p {
+            font-size: 1.1rem;
+            color: var(--white);
+            max-width: 600px;
+            text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        /* ===== Buttons ===== */
+        .btn {
+            display: inline-block;
+            padding: 0.85rem 2.2rem;
+            background: var(--primary-color);
+            color: var(--white);
+            text-decoration: none;
+            border-radius: 12px;
+            transition: var(--transition);
+            border: none;
+            cursor: pointer;
+            font-size: 0.95rem;
+            font-weight: 600;
+            font-family: 'Poppins', sans-serif;
+            box-shadow: var(--shadow-soft);
+        }
+
+        .btn:hover {
+            background: var(--primary-dark);
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-medium);
+        }
+
+        .btn-secondary {
+            background: var(--light-bg);
+            color: var(--primary-color);
+        }
+
+        .btn-secondary:hover {
+            background: var(--primary-color);
+            color: var(--white);
+        }
+
+        /* ===== Section Styles ===== */
+        section {
+            padding: 80px 1.5rem;
+        }
+
+        section:nth-child(even) {
+            background-color: var(--bg-white);
+        }
+
+        section:nth-child(odd) {
+            background-color: var(--light-bg);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 3.5rem;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 4px;
+            background: var(--primary-color);
+            margin: 1rem auto 0;
+            border-radius: 2px;
+        }
+
+        /* ===== About Section ===== */
+        #about {
+            background: var(--light-bg);
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .about-text h3 {
+            color: var(--primary-color);
+            margin-bottom: 1.5rem;
+            font-size: 1.8rem;
+        }
+
+        .about-image {
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: var(--shadow-medium);
+            animation: fadeInRight 0.8s ease;
+        }
+
+        .about-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+            transition: var(--transition);
+        }
+
+        .about-image:hover img {
+            transform: scale(1.05);
+        }
+
+        @media (max-width: 768px) {
+            .about-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+        }
+
+        /* ===== Amenities Section ===== */
+        #amenities {
+            background: var(--bg-white);
+        }
+
+        .amenities-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2.5rem;
+        }
+
+        .amenity-card {
+            background: var(--white);
+            padding: 2.5rem;
+            border-radius: 12px;
+            text-align: center;
+            transition: var(--transition);
+            cursor: pointer;
+            box-shadow: var(--shadow-soft);
+            border: 1px solid var(--light-bg);
+        }
+
+        .amenity-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-medium);
+            border-color: var(--primary-color);
+        }
+
+        .amenity-card h3 {
+            margin-bottom: 1rem;
+            color: var(--primary-color);
+        }
+
+        .amenity-card p {
+            font-size: 0.95rem;
+        }
+
+        /* ===== Availability Section ===== */
+        #availability {
+            background: var(--light-bg);
+        }
+
+        .calendar {
+            background: var(--white);
+            padding: 2.5rem;
+            border-radius: 12px;
+            max-width: 700px;
+            margin: 0 auto;
+            box-shadow: var(--shadow-soft);
+        }
+
+        .calendar-month {
+            text-align: center;
+            margin-bottom: 2.5rem;
+        }
+
+        .calendar-month h3 {
+            margin-bottom: 1.5rem;
+            color: var(--primary-color);
+        }
+
+        .calendar-grid {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 0.7rem;
+        }
+
+        .calendar-day {
+            aspect-ratio: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: var(--transition);
+            background: var(--light-bg);
+            border: 2px solid transparent;
+        }
+
+        .calendar-day.available {
+            background: var(--primary-color);
+            color: var(--white);
+        }
+
+        .calendar-day.available:hover {
+            transform: scale(1.1);
+        }
+
+        .calendar-day.booked {
+            background: #E8D5D0;
+            color: var(--text-light);
+            opacity: 0.6;
+            cursor: not-allowed;
+        }
+
+        .calendar-day.today {
+            border-color: var(--primary-color);
+        }
+
+        .calendar-legend {
+            display: flex;
+            justify-content: center;
+            gap: 2.5rem;
+            margin-top: 2rem;
+            font-size: 0.9rem;
+        }
+
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 0.7rem;
+        }
+
+        .legend-color {
+            width: 20px;
+            height: 20px;
+            border-radius: 4px;
+        }
+
+        /* ===== Gallery Section ===== */
+        #gallery {
+            background: var(--bg-white);
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 12px;
+            box-shadow: var(--shadow-soft);
+            cursor: pointer;
+            aspect-ratio: 1;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.12);
+        }
+
+        .gallery-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(75, 56, 50, 0.8);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            transition: var(--transition);
+        }
+
+        .gallery-item:hover .gallery-overlay {
+            opacity: 1;
+        }
+
+        .gallery-overlay p {
+            color: var(--white);
+            font-weight: 600;
+            font-family: 'Playfair Display', serif;
+            font-size: 1.2rem;
+        }
+
+        /* ===== Pricing Section ===== */
+        #pricing {
+            background: var(--light-bg);
+        }
+
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .pricing-card {
+            background: var(--white);
+            padding: 2.5rem;
+            border-radius: 12px;
+            text-align: center;
+            transition: var(--transition);
+            border: 2px solid var(--light-bg);
+            box-shadow: var(--shadow-soft);
+        }
+
+        .pricing-card.featured {
+            border-color: var(--primary-color);
+            transform: scale(1.05);
+            box-shadow: var(--shadow-medium);
+        }
+
+        .pricing-card:hover {
+            box-shadow: var(--shadow-medium);
+            transform: translateY(-5px);
+        }
+
+        .price {
+            font-size: 2.8rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin: 1.5rem 0;
+            font-family: 'Playfair Display', serif;
+        }
+
+        .price-period {
+            color: var(--text-light);
+            font-size: 0.9rem;
+        }
+
+        .price-features {
+            text-align: left;
+            margin: 1.5rem 0;
+            list-style: none;
+        }
+
+        .price-features li {
+            padding: 0.7rem 0;
+            border-bottom: 1px solid var(--light-bg);
+            color: var(--text-light);
+            font-size: 0.95rem;
+        }
+
+        .price-features li:before {
+            content: '✓ ';
+            color: var(--primary-color);
+            font-weight: bold;
+            margin-right: 0.7rem;
+        }
+
+        /* ===== Contact Section ===== */
+        #contact {
+            background: linear-gradient(135deg, var(--primary-dark), #5C4440);
+            color: var(--white);
+        }
+
+        #contact h2,
+        #contact h3 {
+            color: var(--white);
+        }
+
+        .contact-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+        }
+
+        .contact-info h3 {
+            margin-top: 1.5rem;
+            color: var(--primary-color);
+        }
+
+        .contact-info p {
+            color: rgba(255, 255, 255, 0.95);
+        }
+
+        #map {
+            border-radius: 10px;
+            overflow: hidden;
+            margin-top: 1.5rem;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.6rem;
+            font-weight: 500;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.85rem;
+            border: none;
+            border-radius: 8px;
+            font-family: 'Poppins', sans-serif;
+            font-size: 0.95rem;
+            background: rgba(255, 255, 255, 0.95);
+            transition: var(--transition);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(194, 110, 75, 0.3);
+            background: var(--white);
+        }
+
+        @media (max-width: 768px) {
+            .contact-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+        }
+
+        /* ===== Footer ===== */
+        footer {
+            background: var(--primary-dark);
+            color: var(--white);
+            padding: 3.5rem 1.5rem 1.5rem;
+            text-align: center;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2.5rem;
+            margin-bottom: 2.5rem;
+            text-align: left;
+        }
+
+        .footer-section h4 {
+            color: var(--primary-color);
+            margin-bottom: 1.2rem;
+            font-family: 'Playfair Display', serif;
+        }
+
+        .footer-section p,
+        .footer-section a {
+            color: rgba(255, 255, 255, 0.85);
+            text-decoration: none;
+            display: block;
+            margin-bottom: 0.6rem;
+            transition: var(--transition);
+            font-size: 0.95rem;
+        }
+
+        .footer-section a:hover {
+            color: var(--primary-color);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 2rem;
+            color: rgba(255, 255, 255, 0.75);
+        }
+
+        /* ===== Animations ===== */
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInRight {
+            from {
+                opacity: 0;
+                transform: translateX(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.05);
+            }
+        }
+
+        .fade-in {
+            animation: fadeInDown 0.6s ease forwards;
+            opacity: 0;
+        }
+
+        /* ===== Utility Classes ===== */
+        .text-center {
+            text-align: center;
+        }
+
+        .mt-2 {
+            margin-top: 2rem;
+        }
+    </style>
+
+    </style>
+</head>
+<body>
+    <!-- ===== Header & Navigation ===== -->
+    <header>
+        <div class="header-container">
+            <a href="#" class="logo" data-de="Ferienwohnung Witten" data-en="Holiday Apartment">
+                Ferienwohnung Witten
+            </a>
+            <nav>
+                <ul class="nav-menu">
+                    <li><a href="#about" class="nav-link" data-de="Über uns" data-en="About">Über uns</a></li>
+                    <li><a href="#amenities" class="nav-link" data-de="Ausstattung" data-en="Amenities">Ausstattung</a></li>
+                    <li><a href="#availability" class="nav-link" data-de="Verfügbarkeit" data-en="Availability">Verfügbarkeit</a></li>
+                    <li><a href="#gallery" class="nav-link" data-de="Galerie" data-en="Gallery">Galerie</a></li>
+                    <li><a href="#pricing" class="nav-link" data-de="Preise" data-en="Pricing">Preise</a></li>
+                    <li><a href="#contact" class="nav-link" data-de="Kontakt" data-en="Contact">Kontakt</a></li>
+                </ul>
+            </nav>
+            <button class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <div class="language-switch">
+                <button class="flag-btn active" id="de-flag" data-lang="de" title="Deutsch">🇩🇪</button>
+                <button class="flag-btn" id="en-flag" data-lang="en" title="English">🇬🇧</button>
+            </div>
+        </div>
+    </header>
+
+    <!-- ===== Hero Section ===== -->
+    <section class="hero">
+        <h1 class="hero-title" data-de="Ferienwohnung in Witten" data-en="Holiday Apartment in Witten">
+            Ferienwohnung in Witten
+        </h1>
+        <p class="hero-description" data-de="Moderne und gemütliche Ferienwohnung in ruhiger Lage in Witten. Perfekt für Urlaub und Geschäftsreisen." data-en="Modern and cozy holiday apartment in a quiet location in Witten. Perfect for vacations and business trips.">
+            Moderne und gemütliche Ferienwohnung in ruhiger Lage in Witten. Perfekt für Urlaub und Geschäftsreisen.
+        </p>
+        <a href="#contact" class="btn mt-2" data-de="Jetzt buchen" data-en="Book Now">Jetzt buchen</a>
+    </section>
+
+    <!-- ===== About Section ===== -->
+    <section id="about">
+        <div class="container">
+            <h2 class="section-title" data-de="Über unsere Ferienwohnung" data-en="About Our Apartment">
+                Über unsere Ferienwohnung
+            </h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <h3 data-de="Luxuriöse Ferienwohnung mit Pool und Sauna" data-en="Luxury Apartment with Pool and Sauna">
+                        Luxuriöse Ferienwohnung mit Pool und Sauna
+                    </h3>
+                    <p data-de="Unsere Ferienwohnung bietet den perfekten Ort zum Entspannen und Erholen. Mit modernem Design, hochwertiger Ausstattung und einer hervorragenden Lage ist sie ideal für Ihren Aufenthalt in Witten. Gelegen in Witten, 8,8 km von DASA Arbeitswelt Ausstellung, 10 km von Signal Iduna Park und 10 km von Dortmund Zoo entfernt, bietet unsere Unterkunft Übernachtungsmöglichkeiten mit einem Balkon und kostenlosem WLAN. Die Ferienwohnung verfügt über einen eigenen beheizten Pool und befindet sich in einer Gegend mit Möglichkeiten zum Wandern und Fahrradfahren." data-en="Our holiday apartment offers the perfect place to relax and unwind. Located in Witten, 8.8 km from DASA Working World Exhibition, 10 km from Signal Iduna Park and 10 km from Dortmund Zoo, our accommodation offers overnight options with a balcony and free WiFi. The holiday apartment features its own heated pool and is located in an area with hiking and cycling opportunities.">
+                        Unsere Ferienwohnung bietet den perfekten Ort zum Entspannen und Erholen. Mit modernem Design, hochwertiger Ausstattung und einer hervorragenden Lage ist sie ideal für Ihren Aufenthalt in Witten.
+                    </p>
+                    <p data-de="Die Ferienwohnung hat ca. 120 qm, ist hell und modern eingerichtet und befindet sich im Erdgeschoss eines gepflegten Mehrfamilienhauses mit Zugang zum eigenen Garten und Terrasse. Sie wurde durch den Deutschen Tourismusverband e.V. mit 4 von 5 Sternen klassifiziert. Das Rauchen in der Wohnung ist nicht gestattet." data-en="The holiday apartment is approximately 120 sqm, bright and modern furnishings and is located on the ground floor of a well-maintained apartment building with access to its own garden and terrace. It was classified with 4 out of 5 stars by the German Tourism Association. Smoking in the apartment is not permitted.">
+                        Die Ferienwohnung hat ca. 120 qm, ist hell und modern eingerichtet und befindet sich im Erdgeschoss eines gepflegten Mehrfamilienhauses mit Zugang zum eigenen Garten und Terrasse.
+                    </p>
+                    <p data-de="Wir sind eine Familie, die vor 18 Jahren nach Norwegen an den Polarkreis ausgewandert ist und seit Herbst 2018 wieder in die alte Heimat zurückgekommen ist. Wir freuen uns jetzt darauf, in unserer liebevoll renovierten Ferienwohnung Gäste begrüßen zu dürfen." data-en="We are a family that emigrated to Norway at the Arctic Circle 18 years ago and have since autumn 2018 returned to our old homeland. We look forward to welcoming guests in our lovingly renovated holiday apartment.">
+                        Wir sind eine Familie, die vor 18 Jahren nach Norwegen an den Polarkreis ausgewandert ist und seit Herbst 2018 wieder in die alte Heimat zurückgekommen ist.
+                    </p>
+                    <a href="#contact" class="btn" data-de="Kontakt aufnehmen" data-en="Get in Touch">Kontakt aufnehmen</a>
+                </div>
+                <div class="about-image">
+                    <img src="https://images.unsplash.com/photo-1512028891312-f52e1d63a8f9?w=500&h=500&fit=crop" alt="About">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== Amenities Section ===== -->
+    <section id="amenities">
+        <div class="container">
+            <h2 class="section-title" data-de="Ausstattung" data-en="Amenities">
+                Ausstattung
+            </h2>
+            <div class="amenities-grid">
+                <div class="amenity-card">
+                    <h3 data-de="Kostenloses WLAN" data-en="Free WiFi">Kostenloses WLAN</h3>
+                    <p data-de="Schnelles und zuverlässiges Internet für Ihre Arbeits- oder Urlaubsbedürfnisse." data-en="Fast and reliable internet for your work or vacation needs.">Schnelles und zuverlässiges Internet für Ihre Arbeits- oder Urlaubsbedürfnisse.</p>
+                </div>
+                <div class="amenity-card">
+                    <h3 data-de="Vollausgestattete Küche" data-en="Full Kitchen">Vollausgestattete Küche</h3>
+                    <p data-de="Alle wichtigen Geräte zum Zubereiten von Mahlzeiten sind vorhanden." data-en="All necessary appliances for meal preparation are provided.">Alle wichtigen Geräte zum Zubereiten von Mahlzeiten sind vorhanden.</p>
+                </div>
+                <div class="amenity-card">
+                    <h3 data-de="Schöner Garten" data-en="Beautiful Garden">Schöner Garten</h3>
+                    <p data-de="Großer, gepflegter Garten mit Terrasse und Grillmöglichkeiten zum Entspannen und Grillen." data-en="Large, well-maintained garden with terrace and barbecue facilities for relaxing and grilling.">Großer, gepflegter Garten mit Terrasse und Grillmöglichkeiten zum Entspannen und Grillen.</p>
+                </div>
+                <div class="amenity-card">
+                    <h3 data-de="Kostenloser Parkplatz" data-en="Free Parking">Kostenloser Parkplatz</h3>
+                    <p data-de="Privater, kostenloses Parken direkt am Haus." data-en="Private, free parking right next to the house.">Privater, kostenloses Parken direkt am Haus.</p>
+                </div>
+                <div class="amenity-card">
+                    <h3 data-de="Smart TV mit Streaming Stick" data-en="Smart TV with Streaming Stick">Smart TV mit Streaming Stick</h3>
+                    <p data-de="Smart TV mit Streaming Stick - loggen Sie sich mit Ihren eigenen Streaming-Diensten ein (Netflix, Prime Video, Disney+, etc.)." data-en="Smart TV with Streaming Stick - log in with your own streaming services (Netflix, Prime Video, Disney+, etc.).">Smart TV mit Streaming Stick - loggen Sie sich mit Ihren eigenen Streaming-Diensten ein (Netflix, Prime Video, Disney+, etc.).</p>
+                </div>
+                <div class="amenity-card">
+                    <h3 data-de="Komfortable Betten" data-en="Comfortable Beds">Komfortable Betten</h3>
+                    <p data-de="Hochwertige Matratzen und Bettwäsche für erholsamen Schlaf." data-en="High-quality mattresses and bed linen for restful sleep.">Hochwertige Matratzen und Bettwäsche für erholsamen Schlaf.</p>
+                </div>
+                <div class="amenity-card">
+                    <h3 data-de="Zwei Badezimmer" data-en="Two Bathrooms">Zwei Badezimmer</h3>
+                    <p data-de="Zwei moderne Badezimmer mit Dusche, Badewanne und kompletter Sanitäreinrichtung." data-en="Two modern bathrooms with shower, bathtub, and complete sanitary facilities.">Zwei moderne Badezimmer mit Dusche, Badewanne und kompletter Sanitäreinrichtung.</p>
+                </div>
+                <div class="amenity-card">
+                    <h3 data-de="Eigener Swimmingpool" data-en="Private Pool">Eigener Swimmingpool</h3>
+                    <p data-de="Privater beheizter Swimmingpool für entspannende Stunden." data-en="Private heated swimming pool for relaxing hours.">Privater beheizter Swimmingpool für entspannende Stunden.</p>
+                </div>
+                <div class="amenity-card">
+                    <h3 data-de="Sauna & Wellness" data-en="Sauna & Wellness">Sauna & Wellness</h3>
+                    <p data-de="Vollständig ausgestatteter Spa-Bereich mit Sauna zum Entspannen." data-en="Fully equipped spa area with sauna for relaxation.">Vollständig ausgestatteter Spa-Bereich mit Sauna zum Entspannen.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== Availability Section ===== -->
+    <section id="availability">
+        <div class="container">
+            <h2 class="section-title" data-de="Verfügbarkeit" data-en="Availability">
+                Verfügbarkeit
+            </h2>
+            <div id="calendar"></div>
+        </div>
+    </section>
+
+    <!-- ===== Gallery Section ===== -->
+    <section id="gallery">
+        <div class="container">
+            <h2 class="section-title" data-de="Bildergalerie" data-en="Photo Gallery">
+                Bildergalerie
+            </h2>
+            <div class="gallery-grid">
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=400&h=400&fit=crop" alt="Wohnzimmer">
+                    <div class="gallery-overlay">
+                        <p data-de="Wohnzimmer" data-en="Living Room">Wohnzimmer</p>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=400&h=400&fit=crop" alt="Schlafzimmer">
+                    <div class="gallery-overlay">
+                        <p data-de="Schlafzimmer" data-en="Bedroom">Schlafzimmer</p>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1556432365-16cd17cdc628?w=400&h=400&fit=crop" alt="Küche">
+                    <div class="gallery-overlay">
+                        <p data-de="Küche" data-en="Kitchen">Küche</p>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1552321554-5fefe8c9ef14?w=400&h=400&fit=crop" alt="Badezimmer">
+                    <div class="gallery-overlay">
+                        <p data-de="Badezimmer" data-en="Bathroom">Badezimmer</p>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1576610616656-d3aa5d1f4534?w=400&h=400&fit=crop" alt="Pool">
+                    <div class="gallery-overlay">
+                        <p data-de="Privater Pool" data-en="Private Pool">Privater Pool</p>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1540575467063-178f50002711?w=400&h=400&fit=crop" alt="Sauna">
+                    <div class="gallery-overlay">
+                        <p data-de="Sauna & Wellness" data-en="Sauna & Wellness">Sauna & Wellness</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== Pricing Section ===== -->
+    <section id="pricing">
+        <div class="container">
+            <h2 class="section-title" data-de="Preisübersicht" data-en="Pricing">
+                Preisübersicht
+            </h2>
+            <div class="pricing-grid">
+                <div class="pricing-card">
+                    <h3 data-de="Wochenende" data-en="Weekend">Wochenende</h3>
+                    <div class="price">€99</div>
+                    <p class="price-period" data-de="pro Nacht" data-en="per night">pro Nacht</p>
+                    <ul class="price-features">
+                        <li data-de="Max. 2 Personen" data-en="Max. 2 Guests">Max. 2 Personen</li>
+                        <li data-de="Kostenlose Stornierung bis 7 Tage" data-en="Free cancellation up to 7 days">Kostenlose Stornierung bis 7 Tage</li>
+                        <li data-de="Kostenlose Reinigung" data-en="Free cleaning">Kostenlose Reinigung</li>
+                    </ul>
+                    <a href="#contact" class="btn" data-de="Buchen" data-en="Book">Buchen</a>
+                </div>
+                <div class="pricing-card featured">
+                    <h3 data-de="Midweek" data-en="Midweek">Midweek</h3>
+                    <div class="price">€79</div>
+                    <p class="price-period" data-de="pro Nacht" data-en="per night">pro Nacht</p>
+                    <ul class="price-features">
+                        <li data-de="Max. 2 Personen" data-en="Max. 2 Guests">Max. 2 Personen</li>
+                        <li data-de="Kostenlose Stornierung bis 14 Tage" data-en="Free cancellation up to 14 days">Kostenlose Stornierung bis 14 Tage</li>
+                        <li data-de="Kostenlose Reinigung" data-en="Free cleaning">Kostenlose Reinigung</li>
+                        <li data-de="Willkommenspaket" data-en="Welcome package">Willkommenspaket</li>
+                    </ul>
+                    <a href="#contact" class="btn" data-de="Buchen" data-en="Book">Buchen</a>
+                </div>
+                <div class="pricing-card">
+                    <h3 data-de="Langzeitmiete" data-en="Long-Term">Langzeitmiete</h3>
+                    <div class="price">€2.200</div>
+                    <p class="price-period" data-de="pro Monat" data-en="per month">pro Monat</p>
+                    <ul class="price-features">
+                        <li data-de="Max. 2 Personen" data-en="Max. 2 Guests">Max. 2 Personen</li>
+                        <li data-de="Flexible Stornierung" data-en="Flexible cancellation">Flexible Stornierung</li>
+                        <li data-de="Wöchentliche Reinigung" data-en="Weekly cleaning">Wöchentliche Reinigung</li>
+                        <li data-de="Rabatt auf Langzeitkunden" data-en="Long-term discount">Rabatt auf Langzeitkunden</li>
+                    </ul>
+                    <a href="#contact" class="btn" data-de="Buchen" data-en="Book">Buchen</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== Contact Section ===== -->
+    <section id="contact">
+        <div class="container">
+            <h2 class="section-title" data-de="Kontakt & Buchung" data-en="Contact & Booking">
+                Kontakt & Buchung
+            </h2>
+            <div class="contact-content">
+                <div class="contact-info">
+                    <h3 data-de="Kontaktinformationen" data-en="Contact Information">Kontaktinformationen</h3>
+                    <p data-de="Zögern Sie nicht, uns zu kontaktieren. Wir helfen Ihnen gerne weiter!" data-en="Don't hesitate to contact us. We're here to help!">Zögern Sie nicht, uns zu kontaktieren. Wir helfen Ihnen gerne weiter!</p>
+                    
+                    <h3 data-de="Adresse" data-en="Address">Adresse</h3>
+                    <p>Ferienwohnungen Reckert<br>Witten-Annen<br>58456 Witten, Deutschland</p>
+                    <div id="map" style="width: 100%; height: 300px; margin-top: 1.5rem; border-radius: 5px; overflow: hidden;"></div>
+                    
+                    <h3 data-de="Telefon" data-en="Phone">Telefon</h3>
+                    <p>+49 (0) 202 - 123 456</p>
+                    
+                    <h3 data-de="E-Mail" data-en="Email">E-Mail</h3>
+                    <p>info@ferienwohnung-witten.de</p>
+                </div>
+                <form class="contact-form">
+                    <div class="form-group">
+                        <label for="name" data-de="Name" data-en="Name">Name</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email" data-de="E-Mail" data-en="Email">E-Mail</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="phone" data-de="Telefon" data-en="Phone">Telefon</label>
+                        <input type="tel" id="phone" name="phone">
+                    </div>
+                    <div class="form-group">
+                        <label for="message" data-de="Nachricht" data-en="Message">Nachricht</label>
+                        <textarea id="message" name="message" required></textarea>
+                    </div>
+                    <button type="submit" class="btn" data-de="Nachricht senden" data-en="Send Message">Nachricht senden</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== Footer ===== -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4 data-de="Über uns" data-en="About">Über uns</h4>
+                <p data-de="Ferienwohnungen Reckert - eine moderne Ferienwohnung mit Pool und Sauna in Witten. Mit Liebe renoviert und mit 4 Sternen klassifiziert." data-en="Reckert Apartments - a modern holiday apartment with pool and sauna in Witten. Lovingly renovated and rated 4 stars.">Ferienwohnungen Reckert - eine moderne Ferienwohnung mit Pool und Sauna in Witten.</p>
+            </div>
+            <div class="footer-section">
+                <h4 data-de="Schnelllinks" data-en="Quick Links">Schnelllinks</h4>
+                <a href="#about" data-de="Über uns" data-en="About">Über uns</a>
+                <a href="#amenities" data-de="Ausstattung" data-en="Amenities">Ausstattung</a>
+                <a href="#availability" data-de="Verfügbarkeit" data-en="Availability">Verfügbarkeit</a>
+                <a href="#gallery" data-de="Galerie" data-en="Gallery">Galerie</a>
+                <a href="#pricing" data-de="Preise" data-en="Pricing">Preise</a>
+                <a href="#contact" data-de="Kontakt" data-en="Contact">Kontakt</a>
+            </div>
+            <div class="footer-section">
+                <h4 data-de="Rechtliches" data-en="Legal">Rechtliches</h4>
+                <a href="#" data-de="Impressum" data-en="Imprint">Impressum</a>
+                <a href="#" data-de="Datenschutz" data-en="Privacy">Datenschutz</a>
+                <a href="#" data-de="AGB" data-en="Terms">AGB</a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p data-de="© 2026 Ferienwohnung Witten. Alle Rechte vorbehalten." data-en="© 2026 Ferienwohnung Witten. All rights reserved.">© 2026 Ferienwohnung Witten. Alle Rechte vorbehalten.</p>
+        </div>
+    </footer>
+
+    <script>
+        // ===== Translation System =====
+        // Object containing all translations for German and English
+        const translations = {
+            de: {
+                // Navigation
+                'Über uns': 'Über uns',
+                'Ausstattung': 'Ausstattung',
+                'Galerie': 'Galerie',
+                'Preise': 'Preise',
+                'Kontakt': 'Kontakt',
+                // Hero Section
+                'Ferienwohnung in Witten': 'Ferienwohnung in Witten',
+                'Moderne und gemütliche Ferienwohnung in ruhiger Lage in Witten. Perfekt für Urlaub und Geschäftsreisen.': 'Moderne und gemütliche Ferienwohnung in ruhiger Lage in Witten. Perfekt für Urlaub und Geschäftsreisen.',
+                'Jetzt buchen': 'Jetzt buchen',
+                // About Section
+                'Über unsere Ferienwohnung': 'Über unsere Ferienwohnung',
+                'Komfort und Qualität': 'Komfort und Qualität',
+                'Unsere Ferienwohnung bietet den perfekten Ort zum Entspannen und Erholen. Mit modernem Design, hochwertiger Ausstattung und einer hervorragenden Lage ist sie ideal für Ihren Aufenthalt in Witten.': 'Unsere Ferienwohnung bietet den perfekten Ort zum Entspannen und Erholen. Mit modernem Design, hochwertiger Ausstattung und einer hervorragenden Lage ist sie ideal für Ihren Aufenthalt in Witten.',
+                'Die Wohnung befindet sich in einer ruhigen, gut erreichbaren Gegend von Witten und bietet einfachen Zugang zu lokalen Attraktionen, Restaurants und Shopping-Möglichkeiten.': 'Die Wohnung befindet sich in einer ruhigen, gut erreichbaren Gegend von Witten und bietet einfachen Zugang zu lokalen Attraktionen, Restaurants und Shopping-Möglichkeiten.',
+                'Kontakt aufnehmen': 'Kontakt aufnehmen',
+                // Amenities
+                'Kostenloses WLAN': 'Kostenloses WLAN',
+                'Schnelles und zuverlässiges Internet für Ihre Arbeits- oder Urlaubsbedürfnisse.': 'Schnelles und zuverlässiges Internet für Ihre Arbeits- oder Urlaubsbedürfnisse.',
+                'Vollausgestattete Küche': 'Vollausgestattete Küche',
+                'Alle wichtigen Geräte zum Zubereiten von Mahlzeiten sind vorhanden.': 'Alle wichtigen Geräte zum Zubereiten von Mahlzeiten sind vorhanden.',
+                'Kostenloser Parkplatz': 'Kostenloser Parkplatz',
+                'Privater, kostenloses Parken direkt am Haus.': 'Privater, kostenloses Parken direkt am Haus.',
+                'Smart TV': 'Smart TV',
+                'Moderner Smart TV mit Streaming-Diensten für Ihr Entertainment.': 'Moderner Smart TV mit Streaming-Diensten für Ihr Entertainment.',
+                'Komfortable Betten': 'Komfortable Betten',
+                'Hochwertige Matratzen und Bettwäsche für erholsamen Schlaf.': 'Hochwertige Matratzen und Bettwäsche für erholsamen Schlaf.',
+                'Modernes Badezimmer': 'Modernes Badezimmer',
+                'Ausgestattet mit Dusche, Badewanne und modernen Sanitäreinrichtungen.': 'Ausgestattet mit Dusche, Badewanne und modernen Sanitäreinrichtungen.',
+                // Gallery
+                'Bildergalerie': 'Bildergalerie',
+                'Wohnzimmer': 'Wohnzimmer',
+                'Schlafzimmer': 'Schlafzimmer',
+                'Küche': 'Küche',
+                'Badezimmer': 'Badezimmer',
+                'Außenansicht': 'Außenansicht',
+                'Details': 'Details',
+                // Pricing
+                'Preisübersicht': 'Preisübersicht',
+                'Wochenende': 'Wochenende',
+                'pro Nacht': 'pro Nacht',
+                'Max. 2 Personen': 'Max. 2 Personen',
+                'Kostenlose Stornierung bis 7 Tage': 'Kostenlose Stornierung bis 7 Tage',
+                'Kostenlose Reinigung': 'Kostenlose Reinigung',
+                'Midweek': 'Midweek',
+                'Kostenlose Stornierung bis 14 Tage': 'Kostenlose Stornierung bis 14 Tage',
+                'Willkommenspaket': 'Willkommenspaket',
+                'Langzeitmiete': 'Langzeitmiete',
+                'pro Monat': 'pro Monat',
+                'Flexible Stornierung': 'Flexible Stornierung',
+                'Wöchentliche Reinigung': 'Wöchentliche Reinigung',
+                'Rabatt auf Langzeitkunden': 'Rabatt auf Langzeitkunden',
+                'Buchen': 'Buchen',
+                // Contact
+                'Kontakt & Buchung': 'Kontakt & Buchung',
+                'Kontaktinformationen': 'Kontaktinformationen',
+                'Zögern Sie nicht, uns zu kontaktieren. Wir helfen Ihnen gerne weiter!': 'Zögern Sie nicht, uns zu kontaktieren. Wir helfen Ihnen gerne weiter!',
+                'Adresse': 'Adresse',
+                'Telefon': 'Telefon',
+                'E-Mail': 'E-Mail',
+                'Name': 'Name',
+                'Nachricht': 'Nachricht',
+                'Nachricht senden': 'Nachricht senden',
+                // Footer
+                'Rechtliches': 'Rechtliches',
+                'Impressum': 'Impressum',
+                'Datenschutz': 'Datenschutz',
+                'AGB': 'AGB',
+                '© 2026 Ferienwohnung Witten. Alle Rechte vorbehalten.': '© 2026 Ferienwohnung Witten. Alle Rechte vorbehalten.',
+            },
+            en: {
+                // Navigation
+                'Über uns': 'About',
+                'Ausstattung': 'Amenities',
+                'Galerie': 'Gallery',
+                'Preise': 'Pricing',
+                'Kontakt': 'Contact',
+                // Hero Section
+                'Ferienwohnung in Witten': 'Holiday Apartment in Witten',
+                'Moderne und gemütliche Ferienwohnung in ruhiger Lage in Witten. Perfekt für Urlaub und Geschäftsreisen.': 'Modern and cozy holiday apartment in a quiet location in Witten. Perfect for vacations and business trips.',
+                'Jetzt buchen': 'Book Now',
+                // About Section
+                'Über unsere Ferienwohnung': 'About Our Apartment',
+                'Komfort und Qualität': 'Comfort and Quality',
+                'Unsere Ferienwohnung bietet den perfekten Ort zum Entspannen und Erholen. Mit modernem Design, hochwertiger Ausstattung und einer hervorragenden Lage ist sie ideal für Ihren Aufenthalt in Witten.': 'Our holiday apartment offers the perfect place to relax and unwind. With modern design, high-quality furnishings, and an excellent location, it is ideal for your stay in Witten.',
+                'Die Wohnung befindet sich in einer ruhigen, gut erreichbaren Gegend von Witten und bietet einfachen Zugang zu lokalen Attraktionen, Restaurants und Shopping-Möglichkeiten.': 'The apartment is located in a quiet, easily accessible area of Witten and offers easy access to local attractions, restaurants, and shopping opportunities.',
+                'Kontakt aufnehmen': 'Get in Touch',
+                // Amenities
+                'Kostenloses WLAN': 'Free WiFi',
+                'Schnelles und zuverlässiges Internet für Ihre Arbeits- oder Urlaubsbedürfnisse.': 'Fast and reliable internet for your work or vacation needs.',
+                'Vollausgestattete Küche': 'Full Kitchen',
+                'Alle wichtigen Geräte zum Zubereiten von Mahlzeiten sind vorhanden.': 'All necessary appliances for meal preparation are provided.',
+                'Kostenloser Parkplatz': 'Free Parking',
+                'Privater, kostenloses Parken direkt am Haus.': 'Private, free parking right next to the house.',
+                'Smart TV': 'Smart TV',
+                'Moderner Smart TV mit Streaming-Diensten für Ihr Entertainment.': 'Modern smart TV with streaming services for your entertainment.',
+                'Komfortable Betten': 'Comfortable Beds',
+                'Hochwertige Matratzen und Bettwäsche für erholsamen Schlaf.': 'High-quality mattresses and bed linen for restful sleep.',
+                'Modernes Badezimmer': 'Modern Bathroom',
+                'Ausgestattet mit Dusche, Badewanne und modernen Sanitäreinrichtungen.': 'Equipped with shower, bathtub, and modern sanitary facilities.',
+                // Gallery
+                'Bildergalerie': 'Photo Gallery',
+                'Verfügbarkeit': 'Availability',
+                'Wohnzimmer': 'Living Room',
+                'Schlafzimmer': 'Bedroom',
+                'Küche': 'Kitchen',
+                'Badezimmer': 'Bathroom',
+                'Privater Pool': 'Private Pool',
+                'Sauna & Wellness': 'Sauna & Wellness',
+                'Eigener Swimmingpool': 'Private Pool',
+                'Luxuriöse Ferienwohnung mit Pool und Sauna': 'Luxury Apartment with Pool and Sauna',
+                // Pricing
+                'Preisübersicht': 'Pricing',
+                'Wochenende': 'Weekend',
+                'pro Nacht': 'per night',
+                'Max. 2 Personen': 'Max. 2 Guests',
+                'Kostenlose Stornierung bis 7 Tage': 'Free cancellation up to 7 days',
+                'Kostenlose Reinigung': 'Free cleaning',
+                'Midweek': 'Midweek',
+                'Kostenlose Stornierung bis 14 Tage': 'Free cancellation up to 14 days',
+                'Willkommenspaket': 'Welcome package',
+                'Langzeitmiete': 'Long-Term',
+                'pro Monat': 'per month',
+                'Flexible Stornierung': 'Flexible cancellation',
+                'Wöchentliche Reinigung': 'Weekly cleaning',
+                'Rabatt auf Langzeitkunden': 'Long-term discount',
+                'Buchen': 'Book',
+                // Contact
+                'Kontakt & Buchung': 'Contact & Booking',
+                'Kontaktinformationen': 'Contact Information',
+                'Zögern Sie nicht, uns zu kontaktieren. Wir helfen Ihnen gerne weiter!': 'Don\'t hesitate to contact us. We\'re here to help!',
+                'Adresse': 'Address',
+                'Telefon': 'Phone',
+                'E-Mail': 'Email',
+                'Name': 'Name',
+                'Nachricht': 'Message',
+                'Nachricht senden': 'Send Message',
+                // Footer
+                'Rechtliches': 'Legal',
+                'Impressum': 'Imprint',
+                'Datenschutz': 'Privacy',
+                'AGB': 'Terms',
+                '© 2026 Ferienwohnung Witten. Alle Rechte vorbehalten.': '© 2026 Ferienwohnung Witten. All rights reserved.',
+                // Calendar
+                'Verfügbar': 'Available',
+                'Gebucht': 'Booked',
+                'Karte wird geladen...': 'Loading map...',
+                // Additional
+                'Luxuriöse Ferienwohnung mit Pool und Sauna': 'Luxury Apartment with Pool and Sauna',
+                'Privater Pool': 'Private Pool',
+            }
+        };
+
+        // ===== Language Switching System =====
+        // Initialize language to German (default)
+        let currentLanguage = 'de';
+
+        // Function to switch language across the entire website
+        function switchLanguage(lang) {
+            currentLanguage = lang;
+            // Update all elements with data-de and data-en attributes
+            document.querySelectorAll('[data-de][data-en]').forEach(element => {
+                const newText = element.getAttribute(`data-${lang}`);
+                if (newText) {
+                    element.textContent = newText;
+                }
+            });
+            // Update active flag button
+            document.querySelectorAll('.flag-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            document.getElementById(`${lang}-flag`).classList.add('active');
+        }
+
+        // Event listeners for language switch buttons
+        document.getElementById('de-flag').addEventListener('click', () => switchLanguage('de'));
+        document.getElementById('en-flag').addEventListener('click', () => switchLanguage('en'));
+
+        // ===== Mobile Menu Toggle =====
+        const hamburger = document.getElementById('hamburger');
+        const navMenu = document.querySelector('.nav-menu');
+
+        hamburger.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+        });
+
+        // Close mobile menu when a link is clicked
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', () => {
+                navMenu.classList.remove('active');
+            });
+        });
+
+        // ===== Smooth Scrolling (Enhanced) =====
+        // Already handled by CSS, but this ensures smooth behavior on all browsers
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+        });
+
+        // ===== Form Handling =====
+        document.querySelector('.contact-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            // Get form values
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const phone = document.getElementById('phone').value;
+            const message = document.getElementById('message').value;
+            
+            // Create mailto link (in production, you would send this to a server)
+            const subject = currentLanguage === 'de' ? 'Anfrage zu Ferienwohnung Witten' : 'Inquiry about Holiday Apartment Witten';
+            const mailtoLink = `mailto:info@ferienwohnung-witten.de?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(`Name: ${name}\nEmail: ${email}\nPhone: ${phone}\n\nMessage:\n${message}`)}`;
+            
+            // Show success message
+            const successMsg = currentLanguage === 'de' ? 'Vielen Dank! Wir werden Sie bald kontaktieren.' : 'Thank you! We will contact you soon.';
+            alert(successMsg);
+            
+            // Reset form
+            this.reset();
+        });
+
+        // ===== Scroll Animation for Elements =====
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('fade-in');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        // Observe all sections for scroll animations
+        document.querySelectorAll('section').forEach(section => {
+            observer.observe(section);
+        });
+
+        // ===== Calendar / Availability System =====
+        function initCalendar() {
+            const calendarContainer = document.getElementById('calendar');
+            if (!calendarContainer) return;
+
+            const today = new Date();
+            let html = '<div class="calendar">';
+
+            // Show current month and next month
+            for (let m = 0; m < 2; m++) {
+                const date = new Date(today.getFullYear(), today.getMonth() + m);
+                const monthName = date.toLocaleDateString(currentLanguage === 'de' ? 'de-DE' : 'en-US', { month: 'long', year: 'numeric' });
+                const daysInMonth = new Date(date.getFullYear(), date.getMonth() + 1, 0).getDate();
+                const firstDay = new Date(date.getFullYear(), date.getMonth(), 1).getDay();
+
+                html += `<div class="calendar-month"><h3>${monthName}</h3><div class="calendar-grid">`;
+
+                // Days of week header
+                const daysOfWeek = currentLanguage === 'de' ? ['Mo', 'Di', 'Mi', 'Do', 'Fr', 'Sa', 'So'] : ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
+                daysOfWeek.forEach(day => {
+                    html += `<div style="font-weight: bold; padding: 0.5rem; text-align: center;">${day}</div>`;
+                });
+
+                // Empty cells before first day
+                for (let i = 0; i < firstDay - 1; i++) {
+                    html += '<div></div>';
+                }
+
+                // Days of month
+                for (let day = 1; day <= daysInMonth; day++) {
+                    const dayDate = new Date(date.getFullYear(), date.getMonth(), day);
+                    const isToday = dayDate.toDateString() === today.toDateString();
+                    const isFuture = dayDate > today;
+                    const isBooked = Math.random() < 0.2; // 20% chance of being booked
+                    
+                    const classes = ['calendar-day'];
+                    if (isFuture && !isBooked) classes.push('available');
+                    if (isBooked) classes.push('booked');
+                    if (isToday) classes.push('today');
+
+                    html += `<div class="${classes.join(' ')}">${day}</div>`;
+                }
+
+                html += '</div></div>';
+            }
+
+            html += `
+                <div class="calendar-legend">
+                    <div class="legend-item">
+                        <div class="legend-color" style="background: #2ecc71;"></div>
+                        <span data-de="Verfügbar" data-en="Available">Verfügbar</span>
+                    </div>
+                    <div class="legend-item">
+                        <div class="legend-color" style="background: #e74c3c;"></div>
+                        <span data-de="Gebucht" data-en="Booked">Gebucht</span>
+                    </div>
+                </div>
+            </div>`;
+
+            calendarContainer.innerHTML = html;
+        }
+
+        // Initialize calendar
+        initCalendar();
+
+        // ===== Google Maps Initialization =====
+        function initMap() {
+            const mapElement = document.getElementById('map');
+            if (!mapElement) return;
+
+            // Witten, Germany coordinates
+            const wittenlocation = { lat: 51.4386, lng: 7.3262 };
+
+            const map = new (window.google && window.google.maps ? window.google.maps.Map : function() {})
+                (mapElement, {
+                    zoom: 15,
+                    center: wittenlocation,
+                });
+
+            // Add marker
+            if (window.google && window.google.maps) {
+                new window.google.maps.Marker({
+                    position: wittenlocation,
+                    map: map,
+                    title: 'Ferienwohnungen Reckert'
+                });
+            }
+        }
+
+        // Try to load Google Maps
+        // Note: Replace with your actual Google Maps API key
+        const mapScript = document.createElement('script');
+        mapScript.src = 'https://maps.googleapis.com/maps/api/js?key=YOUR_GOOGLE_MAPS_API_KEY';
+        mapScript.onload = initMap;
+        mapScript.onerror = () => {
+            // Fallback if Google Maps doesn't load
+            const mapElement = document.getElementById('map');
+            if (mapElement) {
+                mapElement.innerHTML = '<div style="padding: 2rem; text-align: center; background: #ecf0f1; border-radius: 5px;"><p data-de="Karte wird geladen..." data-en="Loading map...">Karte wird geladen...</p><p>Ferienwohnungen Reckert, Witten-Annen, 58456 Witten, Deutschland</p></div>';
+            }
+        };
+        // document.head.appendChild(mapScript); // Uncomment when you have a Google Maps API key
+    </script>
+</body>
+</html>
