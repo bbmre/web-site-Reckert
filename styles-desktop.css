@@ -188,31 +188,6 @@
         font-size: 0.95rem;
     }
 
-    /* ===== Calendar/Availability - Desktop Optimized ===== */
-    .calendar {
-        padding: 2.5rem;
-        max-width: 700px;
-        border-radius: 12px;
-    }
-
-    .calendar-grid {
-        gap: 0.7rem;
-    }
-
-    .calendar-day {
-        font-size: 0.9rem;
-    }
-
-    .calendar-legend {
-        gap: 2.5rem;
-        font-size: 0.9rem;
-    }
-
-    .legend-color {
-        width: 20px;
-        height: 20px;
-    }
-
     /* ===== Gallery Section - Desktop Optimized ===== */
     .gallery-grid {
         display: grid;
